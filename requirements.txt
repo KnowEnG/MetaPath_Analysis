@@ -1,0 +1,14 @@
+appdirs==1.4.0
+cycler==0.10.0
+decorator==4.0.10
+future==0.16.0
+matplotlib==2.0.0b1
+MDP==3.5
+numpy==1.13.3+mkl
+olefile==0.44
+Pillow==4.3.0
+pyparsing==2.1.5
+pytools==2016.2.1
+scikit-learn==0.19.0
+scipy==1.0.0rc1
+six==1.10.0
