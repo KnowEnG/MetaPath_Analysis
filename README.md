@@ -21,7 +21,8 @@ Questions or feedback should be directed to Charles Blatti ([blatti@illinois.edu
 4. [MAPR Resources](#mapr-resources)
     1. [Input File Formats](#input-file-formats)
     2. [MAPR File Formats](#mapr-file-formats)
-5. [Acknowledgements](#acknowledgements)
+5. [EMT Analysis Data Set](#emt-analysis-data-set)
+6. [Acknowledgements](#acknowledgements)
 
 ## Overview
 
@@ -39,7 +40,7 @@ Below is a diagram from the paper that shows a schematic for each of the three p
 
 ## Prerequisites
 
-The final version of GeneSet MAPR was written and tested in Python 3.5. Certain functionality is known to not work with version 2.7 and earlier.
+The final version of GeneSet MAPR was written and tested in n 3.5. Certain functionality is known to not work with version 2.7 and earlier.
 
 The only non-standard python packages that are required are [NumPy](https://numpy.org/) and [scikit-Learn](https://scikit-learn.org/stable/). Exact package numbers are listed in the `requirements.txt` file.
 
@@ -66,7 +67,7 @@ Optional arguments are specified with flags, and include:
 An example command below explicitly specifies the location of the `.keep.txt` file, a different output location, limiting meta-paths to lengths of no greater than 3 edges, saving .txt sub-network edge lists, and specifying verbose terminal output:
 
 ``` bash
-python MAPR_networkPrep.py ./demo_data/networks/demo_net.edge.txt \
+python3 MAPR_networkPrep.py ./demo_data/networks/demo_net.edge.txt \
     -k ./demo_data/networks/demo_net.keep.txt -n demo_outputs/networks/ -l 3 -t TRUE -v 1
 ```
 
@@ -115,7 +116,7 @@ Optional arguments for the `MAPR_characterizeSet.py` script are specified with f
 An example of this script specifying a maximum considered meta-path length of 3, the creation of only 31 models per set, and verbose terminal feedback is below.
 
 ``` bash
-python MAPR_characterizeSet.py ./demo_outputs/features/batch-000/ -m 31 -l 3 -v 1
+python3 MAPR_characterizeSet.py ./demo_outputs/features/batch-000/ -m 31 -l 3 -v 1
 ```
 
 The final outputs of this MAPR tool are the ranked gene lists and the AUC performance files for each partition.  More information about the files and their formats can be found in the MAPR Resources [file formats](#mapr_characterizeset-outputs).
@@ -249,6 +250,10 @@ There are many outputs that will be produced when `MAPR_characterizeSet.py` is r
    2. **ranked_all_genes-[model_description]_Avg.txt** - rows for every gene in the network with columns for 1) weighted combination across models of z-scores of the predictions, 2) the gene name, 3 and 4) the gene rank for relatedness to input gene set
    3. **ranked_genes-[model_description]_Avg.txt** - rows for every gene in the network not in **known.txt** with columns for 1) weighted combination models of prediction scores normalized between 0 and 1, 2) the gene name, 3) the gene rank for relatedness to input gene set, and 4) the weighted combination of model prediction ranks
    4. **scored_features-[model_description].txt** - a meta-path-type by ensemble-model matrix with the [-1,1] normalized meta path type weights for each model.  The first three columns show 1) the average meta path type weight across models, 2) the length of the meta path type, and 3) the name of the meta path type. The first row lists the combination weights for each model.
+
+## EMT Analysis Data Set
+
+In the final case study of the MAPR paper, we examine the genes associated with epithelial-to-mesenchymal transition (EMT). The network and sample gene sets associated with this analysis are available to download as a zipped archive from [here](http://veda.cs.uiuc.edu/MAPR/emt_analysis.zip).
 
 ## Acknowledgements
 
