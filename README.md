@@ -40,13 +40,13 @@ Below is a diagram from the paper that shows a schematic for each of the three p
 
 ## Prerequisites
 
-The final version of GeneSet MAPR was written and tested in n 3.5. Certain functionality is known to not work with version 2.7 and earlier.
+The final version of GeneSet MAPR was written and tested in Python 3.5. Certain functionality is known to not work with version 2.7 and earlier.
 
 The only non-standard python packages that are required are [NumPy](https://numpy.org/) and [scikit-Learn](https://scikit-learn.org/stable/). Exact package numbers are listed in the `requirements.txt` file.
 
 ## QuickStart Tutorial
 
-In this section, we will walk through a quick example with demo data. In this example we will use a heterogeneous network with many edge types. We will calculate all meth-paths of length 1, 2, and 3. We will then convert these meth-path statistics into gene features for two different input gene sets. Finally, we will use those features to train an ensemble of classifiers to return a ranked list of related genes for each of our input sets.
+In this section, we will walk through a quick example with demo data. In this example we will use a heterogeneous network with many edge types. We will calculate all meta-paths of length 1, 2, and 3. We will then convert these meta-path statistics into gene features for two different input gene sets. Finally, we will use those features to train an ensemble of classifiers to return a ranked list of related genes for each of our input sets.
 
 ### Preparing the Heterogeneous Network
 
@@ -229,7 +229,7 @@ There are many outputs that will be produced when `MAPR_networkPrep.py` is run. 
 
 There are many outputs that will be produced when `MAPR_buildFeatures.py` is run. These will be stored in the `./outputs/` unless the `-o` flag is used.
 
-For each run of MAPR_buildFeatures.py (i.e. `batch-000`), a set of directories will be generated for each sample. This directories will either correspond to the `full` gene set of that sample or a subsampled `part` of that sample's genes. In the case of 4-fold cross validation, there will be `part-` subdirectories ending in `00`, `01`, `02`, and `03`. For this script, the outputs are:
+For each run of MAPR_buildFeatures.py (i.e. `batch-000`), a set of directories will be generated for each sample. These directories will either correspond to the `full` gene set of that sample or a subsampled `part` of that sample's genes. In the case of 4-fold cross validation, there will be `part-` subdirectories ending in `00`, `01`, `02`, and `03`. For this script, the outputs are:
 
 1. **parameters.txt** - a two column file that records the parameter and their values for this run
 2. For each `[sample]`'s input gene set and each `full-[sample]` or `part-[sample]-[XX]` partition:
@@ -247,7 +247,7 @@ There are many outputs that will be produced when `MAPR_characterizeSet.py` is r
 3. **results-AUC_every_fold.txt** - for each cross validation partition and each model description, the AUC for the ranked list of left out genes on that input gene set partition.
 4. For each `[sample]`'s input gene set and each `full-[sample]` or `part-[sample]-[XX]` partition:
    1. **parameters-[model_description].txt** - a description of the given model and model parameters values for the ensemble learned on that given partition
-   2. **ranked_all_genes-[model_description]_Avg.txt** - rows for every gene in the network with columns for 1) weighted combination across models of z-scores of the predictions, 2) the gene name, 3 and 4) the gene rank for relatedness to input gene set
+   2. **ranked_all_genes-[model_description]_Avg.txt** - rows for every gene in the network with columns for 1) weighted combination across models of z-scores of the predictions, 2) the gene name, and both columns 3 and 4) the gene rank for relatedness to input gene set
    3. **ranked_genes-[model_description]_Avg.txt** - rows for every gene in the network not in **known.txt** with columns for 1) weighted combination models of prediction scores normalized between 0 and 1, 2) the gene name, 3) the gene rank for relatedness to input gene set, and 4) the weighted combination of model prediction ranks
    4. **scored_features-[model_description].txt** - a meta-path-type by ensemble-model matrix with the [-1,1] normalized meta path type weights for each model.  The first three columns show 1) the average meta path type weight across models, 2) the length of the meta path type, and 3) the name of the meta path type. The first row lists the combination weights for each model.
 
