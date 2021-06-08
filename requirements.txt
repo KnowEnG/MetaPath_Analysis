@@ -6,7 +6,7 @@ matplotlib==2.0.0b1
 MDP==3.5
 numpy==1.13.3+mkl
 olefile==0.44
-Pillow==4.3.0
+Pillow==8.2.0
 pyparsing==2.1.5
 pytools==2016.2.1
 scikit-learn==0.19.0
