@@ -4,7 +4,7 @@ decorator==4.0.10
 future==0.16.0
 matplotlib==2.0.0b1
 MDP==3.5
-numpy==1.13.3+mkl
+numpy==1.22.0
 olefile==0.44
 Pillow==4.3.0
 pyparsing==2.1.5
